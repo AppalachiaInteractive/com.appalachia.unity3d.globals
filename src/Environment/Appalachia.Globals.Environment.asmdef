@@ -1,0 +1,22 @@
+{
+    "name": "Appalachia.Globals.Environment",
+    "rootNamespace": "",
+    "references": [
+        "GUID:27374ac3d2df75c448adb0e319b58fee",
+        "GUID:4a600fa6fa2ca854b8f233a23710b315",
+        "GUID:cf75d8bea22d8fb469a2aa239cfc6930",
+        "GUID:61d5c5627f609f946a4c3771484d27dd",
+        "GUID:6b8c99229a4703f47b9e6e696c2e8d8d",
+        "GUID:d8b63aba1907145bea998dd612889d6b",
+        "GUID:c67cf058dd4aa774ea18e21e2cf75642"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
