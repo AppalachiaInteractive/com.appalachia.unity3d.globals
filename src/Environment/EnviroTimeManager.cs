@@ -4,6 +4,7 @@ using Appalachia.Editing.Attributes;
 using Appalachia.Utility.Constants;
 using Unity.Profiling;
 using UnityEditor;
+
 #if UNITY_EDITOR
 
 #endif
@@ -20,18 +21,20 @@ namespace Appalachia.Globals.Environment
 
         private static bool _paused;
 
-        private static EnviroTime.TimeProgressMode _unpauseMode = EnviroTime.TimeProgressMode.Simulated;
+        private static EnviroTime.TimeProgressMode _unpauseMode =
+            EnviroTime.TimeProgressMode.Simulated;
 
         private static bool _initialized;
         private static EnviroSky _core;
         private static EnviroSkyMgr _mgr;
 
-        
+        private static readonly ProfilerMarker _PRF_Initialize = new(_PRF_PFX + nameof(Initialize));
+
+        private static readonly ProfilerMarker _PRF_RefreshScene =
+            new(_PRF_PFX + nameof(RefreshScene));
 
         public static bool Valid => (_core != null) && (_mgr != null);
 
-        private static readonly ProfilerMarker _PRF_Initialize = new ProfilerMarker(_PRF_PFX + nameof(Initialize));
-        
         private static void Initialize()
         {
             if (_initialized)
@@ -309,7 +312,6 @@ namespace Appalachia.Globals.Environment
             return 1.0f - _core.GameTime.solarTime;
         }
 
-        private static readonly ProfilerMarker _PRF_RefreshScene = new ProfilerMarker(_PRF_PFX + nameof(RefreshScene));
         private static void RefreshScene()
         {
             using (_PRF_RefreshScene.Auto())

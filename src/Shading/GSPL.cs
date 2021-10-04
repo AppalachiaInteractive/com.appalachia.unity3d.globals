@@ -3,6 +3,7 @@
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+
 #if UNITY_EDITOR
 
 #endif
@@ -17,7 +18,7 @@ namespace Appalachia.Globals.Shading
 
         private static Dictionary<string, int> _propertyIDsByName;
 
-        private static object _addLock = new object();
+        private static object _addLock = new();
 
         public static Dictionary<string, int> propertyIDsByName
         {

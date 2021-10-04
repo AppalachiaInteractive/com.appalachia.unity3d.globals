@@ -16,20 +16,9 @@ namespace Appalachia.Globals.Timing
         private static double _worldAgeInSeconds;
         private static double _worldAgeInSecondsSetAt;
 
-        private static readonly ProfilerMarker _PRF_CoreClock = new ProfilerMarker(_PRF_PFX + nameof(CoreClock));
- 
-        [ExecuteOnEnable]
-        static void Initialize()
-        {
+        private static readonly ProfilerMarker _PRF_CoreClock = new(_PRF_PFX + nameof(CoreClock));
 
-            using (_PRF_CoreClock.Auto())
-            {
-                _ticker = new GameObject();
-                _ticker.hideFlags = HideFlags.HideAndDontSave;
-                _ticker.AddComponent<CoreClockTicker>();
-                Tick();
-            }
-        }
+        private static readonly ProfilerMarker _PRF_Tick = new(_PRF_PFX + nameof(Tick));
 
         public static double Now { get; private set; }
         public static double VisualDelta { get; private set; }
@@ -43,15 +32,27 @@ namespace Appalachia.Globals.Timing
         public static float TimeScaleF { get; private set; }
         public static float TimeSinceLevelLoadF { get; private set; }
 
-        public static double WorldAgeInSeconds => _worldAgeInSeconds + _worldAgeInSecondsSetAt.TimeSince();
+        public static double WorldAgeInSeconds =>
+            _worldAgeInSeconds + _worldAgeInSecondsSetAt.TimeSince();
+
         public static double WorldAgeInSecondsF => (float) WorldAgeInSeconds;
 
-        private static readonly ProfilerMarker _PRF_Tick = new ProfilerMarker(_PRF_PFX + nameof(Tick));
+        [ExecuteOnEnable]
+        private static void Initialize()
+        {
+            using (_PRF_CoreClock.Auto())
+            {
+                _ticker = new GameObject();
+                _ticker.hideFlags = HideFlags.HideAndDontSave;
+                _ticker.AddComponent<CoreClockTicker>();
+                Tick();
+            }
+        }
+
         public static void Tick()
         {
             using (_PRF_Tick.Auto())
             {
-
                 Now = Time.time;
                 VisualDelta = Time.deltaTime;
                 PhysicalDelta = Time.fixedDeltaTime;

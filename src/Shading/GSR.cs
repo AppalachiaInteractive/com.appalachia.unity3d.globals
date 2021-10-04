@@ -13,14 +13,22 @@ namespace Appalachia.Globals.Shading
     public class GSR : SelfSavingSingletonScriptableObject<GSR>
     {
         private const string _PRF_PFX = nameof(GSR) + ".";
-        
+
+        private static readonly ProfilerMarker _PRF_OnEnable = new(_PRF_PFX + nameof(OnEnable));
+
+        private static readonly ProfilerMarker _PRF_ForceReinitialze =
+            new(_PRF_PFX + nameof(ForceReinitialze));
+
+        private static readonly ProfilerMarker _PRF_InitializeShaderReferences =
+            new(_PRF_PFX + nameof(InitializeShaderReferences));
+
         public ShaderVariantCollection shaderVariants;
 
-        public List<Shader> leafShaders = new List<Shader>();
-        public List<Shader> barkShaders = new List<Shader>();
-        public List<Shader> shadowShaders = new List<Shader>();
-        public List<Shader> grassShaders = new List<Shader>();
-        public List<Shader> plantShaders = new List<Shader>();
+        public List<Shader> leafShaders = new();
+        public List<Shader> barkShaders = new();
+        public List<Shader> shadowShaders = new();
+        public List<Shader> grassShaders = new();
+        public List<Shader> plantShaders = new();
 
         public Shader vspBillboardAtlas;
         public Shader vspBillboardNormals;
@@ -43,16 +51,14 @@ namespace Appalachia.Globals.Shading
         public Shader textureCombiner;
         public Shader textureFlipper;
 
-        public List<Shader> otherShaders = new List<Shader>();
+        public List<Shader> otherShaders = new();
 
         [NonSerialized] private bool _initialized;
 
-        private static readonly ProfilerMarker _PRF_OnEnable = new ProfilerMarker(_PRF_PFX + nameof(OnEnable));
-        
         protected override void OnEnable()
         {
             base.OnEnable();
-            
+
             using (_PRF_OnEnable.Auto())
             {
                 _initialized = false;
@@ -93,8 +99,6 @@ namespace Appalachia.Globals.Shading
             }
         }
 
-
-        private static readonly ProfilerMarker _PRF_ForceReinitialze = new ProfilerMarker(_PRF_PFX + nameof(ForceReinitialze));
         public void ForceReinitialze()
         {
             using (_PRF_ForceReinitialze.Auto())
@@ -105,7 +109,6 @@ namespace Appalachia.Globals.Shading
             }
         }
 
-        private static readonly ProfilerMarker _PRF_InitializeShaderReferences = new ProfilerMarker(_PRF_PFX + nameof(InitializeShaderReferences));
         public void InitializeShaderReferences()
         {
             using (_PRF_InitializeShaderReferences.Auto())

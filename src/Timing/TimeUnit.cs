@@ -6,6 +6,6 @@ namespace Appalachia.Globals.Timing
         Seconds,
         Minutes,
         Hours,
-        Days,
+        Days
     }
 }

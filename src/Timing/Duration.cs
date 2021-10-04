@@ -3,22 +3,25 @@ using Sirenix.OdinInspector;
 
 namespace Appalachia.Globals.Timing
 {
-    [Serializable, InlineProperty]
+    [Serializable]
+    [InlineProperty]
     public struct Duration
     {
         [HorizontalGroup(.33f)]
-        [PropertyRange(nameof(rangeMinimum), nameof(rangeMaximum)), HideLabel]
+        [PropertyRange(nameof(rangeMinimum), nameof(rangeMaximum))]
+        [HideLabel]
         public float value;
-        
+
         [HorizontalGroup(.33f)]
         [HideLabel]
         public TimeUnit unit;
-        
+
         [HorizontalGroup(.33f)]
-        [ToggleLeft, LabelWidth(80f)]
+        [ToggleLeft]
+        [LabelWidth(80f)]
         public bool inRealTime;
 
-        public float InSeconds => 
+        public float InSeconds =>
             unit == TimeUnit.Milliseconds
                 ? value / 1000f
                 : unit == TimeUnit.Seconds
@@ -28,6 +31,7 @@ namespace Appalachia.Globals.Timing
                         : unit == TimeUnit.Hours
                             ? value * 60f * 60f
                             : value * 60f * 60f * 24f;
+
         private float rangeMinimum =>
             unit == TimeUnit.Milliseconds
                 ? 0f
@@ -52,19 +56,22 @@ namespace Appalachia.Globals.Timing
 
         public static Duration ONE_SECOND()
         {
-            return new Duration() {value = 1.0f, unit = TimeUnit.Seconds};
+            return new() {value = 1.0f, unit = TimeUnit.Seconds};
         }
+
         public static Duration ONE_MINUTE()
         {
-            return new Duration() {value = 1.0f, unit = TimeUnit.Minutes};
+            return new() {value = 1.0f, unit = TimeUnit.Minutes};
         }
+
         public static Duration ONE_HOUR()
         {
-            return new Duration() {value = 1.0f, unit = TimeUnit.Hours};
+            return new() {value = 1.0f, unit = TimeUnit.Hours};
         }
+
         public static Duration ONE_DAY()
         {
-            return new Duration() {value = 1.0f, unit = TimeUnit.Days};
+            return new() {value = 1.0f, unit = TimeUnit.Days};
         }
     }
 }
