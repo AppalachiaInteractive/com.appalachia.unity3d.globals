@@ -1,16 +1,16 @@
 #region
 
-using Appalachia.Core.Editing.Attributes;
+using Appalachia.Editing.Attributes;
 using Appalachia.Utility.Constants;
 using Unity.Profiling;
-#if UNITY_EDITOR
 using UnityEditor;
+#if UNITY_EDITOR
 
 #endif
 
 #endregion
 
-namespace Appalachia.Core.Globals.Environment
+namespace Appalachia.Globals.Environment
 {
     [EditorOnlyInitializeOnLoad]
     public static class EnviroTimeManager

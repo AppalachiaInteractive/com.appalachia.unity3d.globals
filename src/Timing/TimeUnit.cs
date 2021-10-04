@@ -1,4 +1,4 @@
-namespace Appalachia.Core.Globals.Timing
+namespace Appalachia.Globals.Timing
 {
     public enum TimeUnit
     {

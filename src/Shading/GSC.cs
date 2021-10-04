@@ -1,4 +1,4 @@
-namespace Appalachia.Core.Globals.Shading
+namespace Appalachia.Globals.Shading
 {
     public static class GSC
     {

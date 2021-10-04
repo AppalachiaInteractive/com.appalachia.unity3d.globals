@@ -1,12 +1,12 @@
 #region
 
-using Appalachia.Core.Behaviours;
+using Appalachia.Base.Behaviours;
 using Unity.Profiling;
 using UnityEngine;
 
 #endregion
 
-namespace Appalachia.Core.Globals.Cameras
+namespace Appalachia.Globals.Cameras
 {
     [ExecuteAlways]
     [DisallowMultipleComponent]

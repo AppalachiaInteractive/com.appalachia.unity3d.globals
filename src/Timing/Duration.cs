@@ -1,7 +1,7 @@
 using System;
 using Sirenix.OdinInspector;
 
-namespace Appalachia.Core.Globals.Timing
+namespace Appalachia.Globals.Timing
 {
     [Serializable, InlineProperty]
     public struct Duration

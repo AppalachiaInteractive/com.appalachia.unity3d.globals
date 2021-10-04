@@ -6,7 +6,7 @@ using UnityEngine;
 
 #endregion
 
-namespace Appalachia.Core.Globals.Timing
+namespace Appalachia.Globals.Timing
 {
     public static class CoreClock
     {

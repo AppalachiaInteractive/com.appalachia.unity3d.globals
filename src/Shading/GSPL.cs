@@ -1,15 +1,15 @@
 #region
 
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 #if UNITY_EDITOR
-using UnityEditor;
 
 #endif
 
 #endregion
 
-namespace Appalachia.Core.Globals.Shading
+namespace Appalachia.Globals.Shading
 {
     public static class GSPL
     {

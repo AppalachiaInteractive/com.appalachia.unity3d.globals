@@ -1,4 +1,4 @@
-namespace Appalachia.Core.Globals.Environment
+namespace Appalachia.Globals.Environment
 {
     public static class ENVIRONMENT
     {

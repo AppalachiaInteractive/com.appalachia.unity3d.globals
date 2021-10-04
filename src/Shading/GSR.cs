@@ -2,13 +2,13 @@
 
 using System;
 using System.Collections.Generic;
-using Appalachia.Core.Scriptables;
+using Appalachia.Base.Scriptables;
 using Unity.Profiling;
 using UnityEngine;
 
 #endregion
 
-namespace Appalachia.Core.Globals.Shading
+namespace Appalachia.Globals.Shading
 {
     public class GSR : SelfSavingSingletonScriptableObject<GSR>
     {
