@@ -2,7 +2,9 @@
 
 using System;
 using System.Collections.Generic;
-using Appalachia.Base.Scriptables;
+using Appalachia.Core.Constants;
+using Appalachia.Core.Scriptables;
+using Appalachia.Core.Shading;
 using Unity.Profiling;
 using UnityEngine;
 
@@ -147,6 +149,17 @@ namespace Appalachia.Globals.Shading
                     }
                 }
             }
+        }
+
+#if UNITY_EDITOR
+        private const string k_MenuName = APPA_MENU.BASE_AppalachiaState +
+                                          APPA_MENU.ASM_AppalachiaGlobals +
+                                          "Rebuild Shader Property Lookup";
+        [UnityEditor.MenuItem(k_MenuName, priority = 1050)]
+#endif
+        public static void RebuildShaderPropertyLookup()
+        {
+            GSR.instance.ForceReinitialze();
         }
     }
 }

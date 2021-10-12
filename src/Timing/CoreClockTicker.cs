@@ -1,13 +1,18 @@
 #region
 
-using Appalachia.Base.Behaviours;
+using Appalachia.Core.Behaviours;
+using Appalachia.Core.Timing;
 
 #endregion
 
 namespace Appalachia.Globals.Timing
 {
-    public class CoreClockTicker : InternalMonoBehaviour
+    public class CoreClockTicker : AppalachiaMonoBehaviour
     {
+        static CoreClockTicker()
+        {
+        }
+        
         private void Start()
         {
             CoreClock.Tick();

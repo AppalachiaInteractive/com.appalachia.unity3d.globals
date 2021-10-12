@@ -1,6 +1,6 @@
 #region
 
-using Appalachia.Base.Behaviours;
+using Appalachia.Core.Behaviours;
 using Unity.Profiling;
 using UnityEngine;
 
@@ -10,7 +10,7 @@ namespace Appalachia.Globals.Cameras
 {
     [ExecuteAlways]
     [DisallowMultipleComponent]
-    public class CameraPreCullManager : InternalMonoBehaviour
+    public class CameraPreCullManager : AppalachiaMonoBehaviour
     {
         private const string _PRF_PFX = nameof(CameraPreCullManager) + ".";
         private static readonly ProfilerMarker _PRF_Awake = new(_PRF_PFX + "Awake");
