@@ -2,7 +2,7 @@
 
 using System;
 using System.Collections.Generic;
-using Appalachia.Core.Constants;
+using Appalachia.CI.Constants;
 using Appalachia.Core.Scriptables;
 using Appalachia.Core.Shading;
 using Unity.Profiling;
