@@ -14,13 +14,18 @@
   "author": {
     "name": "Appalachia Interactive"
   },
-  "dependencies": {},
   "repository": {
-    "url": "https://github.com/AppalachiaInteractive/com.appalachia.unity3d.globals.git",
-    "type": "git"
+    "type": "git",
+    "url": "https://github.com/AppalachiaInteractive/com.appalachia.unity3d.globals.git"
   },
   "publishConfig": {
     "registry": "http://35.211.123.13:4873/"
+  },
+  "dependencies": {
+    "com.appalachia.unity3d.hendrik-haupt.enviro": "0.1.11",
+    "com.appalachia.unity3d.utility": "0.1.0",
+    "com.appalachia.unity3d.ci": "0.1.0",
+    "com.appalachia.unity3d.core": "0.1.3"
   },
   "scripts": {
     "preversion": "bash ~/com.appalachia/appa/appa package unity3d preversion",
@@ -33,5 +38,6 @@
     "prepublishOnly": "bash ~/com.appalachia/appa/appa package unity3d prepublishOnly",
     "publish": "bash ~/com.appalachia/appa/appa package unity3d publish",
     "postpublish": "bash ~/com.appalachia/appa/appa package unity3d postpublish"
-  }
+  },
+  "exports": null
 }
