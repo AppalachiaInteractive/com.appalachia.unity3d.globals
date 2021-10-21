@@ -10,7 +10,7 @@
 
 ## Released Changes
 
-`0.1.3`
+`0.1.4`
 | Hash | Date | Author | Changes |
 |------|------|--------|---------|
-| 851d4630b2231b4975d6e8162db6f5e3362672f6 | 2021-10-16 | Chris Schubert | More project cleanup and refactoring |
+| 02e80f6ae2795da6cbe120b1c0e13ca5ed474808 | 2021-10-20 | Chris Schubert | Automatic depenency and reference management and cleanup |
