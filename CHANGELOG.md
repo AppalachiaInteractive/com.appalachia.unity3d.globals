@@ -12,6 +12,12 @@
 ## Releasing
 | Hash | Date | Author | Changes |
 |------|------|--------|---------|
+| ea3d259847c4e16660cb1e8eb2d5ce210f1f3529 | 2021-10-23 | Chris Schubert | Updating file layout and preparing for integration with UI project |
+
+
+ ## Tag: `v0.1.4`
+| Hash | Date | Author | Changes |
+|------|------|--------|---------|
 | 02e80f6ae2795da6cbe120b1c0e13ca5ed474808 | 2021-10-20 | Chris Schubert | Automatic depenency and reference management and cleanup |
 | fd7dbfb37d2458f469c7a4d77ccea672436f9a75 | 2021-10-20 | Chris Schubert | Committing project and assembly management changes before regenerating project files |
 
