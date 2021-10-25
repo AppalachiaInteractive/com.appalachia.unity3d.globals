@@ -14,7 +14,13 @@
 |------|------|--------|---------|
 
 
- ## Tag: `v0.1.5, origin/main`
+ ## Tag: `v0.1.6, origin/main`
+| Hash | Date | Author | Changes |
+|------|------|--------|---------|
+| c7975ed037078d739fd4584e1bc1a9c48bd5dce2 | 2021-10-24 | Chris Schubert | Automatic dependency updates |
+
+
+ ## Tag: `v0.1.5`
 | Hash | Date | Author | Changes |
 |------|------|--------|---------|
 | bdb22d537925d762580ee0b93e84db944e762c2b | 2021-10-24 | Chris Schubert | Finalizing integration assembly and package analysis and updating package versioning |
