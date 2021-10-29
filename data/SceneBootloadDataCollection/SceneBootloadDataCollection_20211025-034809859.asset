@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a4480ea883c4cf59e559d3da6014323, type: 3}
+  m_Name: SceneBootloadDataCollection_20211025-034809859
+  m_EditorClassIdentifier: 
+  _niceName: 
+  _cachedName: 
+  defaultValue: {fileID: 11400000, guid: f51767162bd2ed4488caddd90c0adf56, type: 2}
+  game: {fileID: 11400000, guid: f51767162bd2ed4488caddd90c0adf56, type: 2}
+  inGameMenu: {fileID: 11400000, guid: 09193e29590e9d84b898e7bb37f9b157, type: 2}
+  loadingScreen: {fileID: 11400000, guid: 88a60eeba3642eb4b9a40153e2af5e45, type: 2}
+  mainMenu: {fileID: 11400000, guid: db378803da86b9f43aea4ccd76f93325, type: 2}
+  pauseScreen: {fileID: 11400000, guid: 60e3b58f101a5354cac8b76c98e5c772, type: 2}
+  splashScreen: {fileID: 11400000, guid: ae2abe438baf4ba4eb6550509a7bf3a7, type: 2}
