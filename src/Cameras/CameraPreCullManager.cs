@@ -10,7 +10,7 @@ namespace Appalachia.Globals.Cameras
 {
     [ExecuteAlways]
     [DisallowMultipleComponent]
-    public class CameraPreCullManager : AppalachiaMonoBehaviour
+    public class CameraPreCullManager : AppalachiaBehaviour
     {
         #region Profiling And Tracing Markers
 

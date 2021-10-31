@@ -2,7 +2,6 @@
 
 using System;
 using System.Collections.Generic;
-using Appalachia.CI.Constants;
 using Appalachia.Core.Scriptables;
 using Appalachia.Core.Shading;
 using Unity.Profiling;
@@ -12,7 +11,7 @@ using UnityEngine;
 
 namespace Appalachia.Globals.Shading
 {
-    public class GSR : SelfSavingSingletonScriptableObject<GSR>
+    public class GSR : SingletonAppalachiaObject<GSR>
     {
         #region Profiling And Tracing Markers
 
@@ -157,7 +156,10 @@ namespace Appalachia.Globals.Shading
         }
 
 #if UNITY_EDITOR
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.State.Base + "Rebuild Shader Property Lookup", priority = PKG.Menu.Appalachia.State.Priority)]
+        [UnityEditor.MenuItem(
+            PKG.Menu.Appalachia.State.Base + "Rebuild Shader Property Lookup",
+            priority = PKG.Menu.Appalachia.State.Priority
+        )]
 #endif
         public static void RebuildShaderPropertyLookup()
         {

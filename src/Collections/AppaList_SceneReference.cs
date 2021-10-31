@@ -1,6 +1,6 @@
 using System;
 using Appalachia.Core.Collections;
-using Appalachia.Globals.Application;
+using Appalachia.Globals.Application.Scenes;
 
 namespace Appalachia.Globals.Collections
 {

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Appalachia.Globals
 {
-    public class MasterObjectReference : SingletonMonoBehaviour<MasterObjectReference>
+    public class MasterObjectReference : SingletonAppalachiaBehaviour<MasterObjectReference>
     {
         public Camera mainCamera;
 

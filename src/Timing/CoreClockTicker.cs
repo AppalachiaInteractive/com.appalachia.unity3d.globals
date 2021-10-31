@@ -7,7 +7,7 @@ using Appalachia.Core.Timing;
 
 namespace Appalachia.Globals.Timing
 {
-    public class CoreClockTicker : AppalachiaMonoBehaviour
+    public class CoreClockTicker : AppalachiaBehaviour
     {
         private void FixedUpdate()
         {

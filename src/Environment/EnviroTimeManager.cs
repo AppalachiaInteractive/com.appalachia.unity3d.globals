@@ -19,15 +19,12 @@ namespace Appalachia.Globals.Environment
         #region Profiling And Tracing Markers
 
         private const string _PRF_PFX = nameof(EnviroTimeManager) + ".";
-
         public static bool breakTime = false;
         private static bool _initialized;
         private static bool _paused;
         private static EnviroSky _core;
         private static EnviroSkyMgr _mgr;
-
         private static EnviroTime.TimeProgressMode _unpauseMode = EnviroTime.TimeProgressMode.Simulated;
-
         private static readonly ProfilerMarker _PRF_Initialize = new(_PRF_PFX + nameof(Initialize));
 
         private static readonly ProfilerMarker _PRF_RefreshScene = new(_PRF_PFX + nameof(RefreshScene));
@@ -327,554 +324,568 @@ namespace Appalachia.Globals.Environment
 
 #if UNITY_EDITOR
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Paused" + SHC.ALT_P, true)]
+        [MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Paused" + SHC.ALT_P, true)]
         public static bool ToggleEnviroTimePauseValidate()
         {
             Menu.SetChecked("Tools/Enviro/Time/Paused", _paused);
             return true;
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Paused" + SHC.ALT_P, priority = 1050)]
+        [MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Paused" + SHC.ALT_P, priority = 1050)]
         public static void ToggleEnviroTimePause()
         {
             SetPaused(!_paused);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Progress/None" + SHC.ALT_F1)]
+        [MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Progress/None" + SHC.ALT_F1)]
         private static void SET_Progress_00()
         {
             SET_Progress(0);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Progress/Simulated" + SHC.ALT_F2)]
+        [MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Progress/Simulated" + SHC.ALT_F2)]
         private static void SET_Progress_01()
         {
             SET_Progress(1);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Progress/OneDay" + SHC.ALT_F3)]
+        [MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Progress/OneDay" + SHC.ALT_F3)]
         private static void SET_Progress_02()
         {
             SET_Progress(2);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Progress/SystemTime" + SHC.ALT_F4)]
+        [MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Progress/SystemTime" + SHC.ALT_F4)]
         private static void SET_Progress_03()
         {
             SET_Progress(3);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Cycle Time/1 minute" + SHC.CTRL_ALT_SHFT_1)]
+        [MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Cycle Time/1 minute" + SHC.CTRL_ALT_SHFT_1)]
         private static void SET_CycleTime_001()
         {
             SetCycleTime(001);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Cycle Time/2 minutes")]
+        [MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Cycle Time/2 minutes")]
         private static void SET_CycleTime_002()
         {
             SetCycleTime(002);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Cycle Time/5 minutes" + SHC.CTRL_ALT_SHFT_2)]
+        [MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Cycle Time/5 minutes" + SHC.CTRL_ALT_SHFT_2)]
         private static void SET_CycleTime_005()
         {
             SetCycleTime(005);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Cycle Time/10 minutes")]
+        [MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Cycle Time/10 minutes")]
         private static void SET_CycleTime_010()
         {
             SetCycleTime(010);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Cycle Time/15 minutes" + SHC.CTRL_ALT_SHFT_3)]
+        [MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Cycle Time/15 minutes" + SHC.CTRL_ALT_SHFT_3)]
         private static void SET_CycleTime_015()
         {
             SetCycleTime(015);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Cycle Time/20 minutes")]
+        [MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Cycle Time/20 minutes")]
         private static void SET_CycleTime_020()
         {
             SetCycleTime(020);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Cycle Time/30 minutes" + SHC.CTRL_ALT_SHFT_4)]
+        [MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Cycle Time/30 minutes" + SHC.CTRL_ALT_SHFT_4)]
         private static void SET_CycleTime_030()
         {
             SetCycleTime(030);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Cycle Time/45 minutes")]
+        [MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Cycle Time/45 minutes")]
         private static void SET_CycleTime_045()
         {
             SetCycleTime(045);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Cycle Time/60 minutes" + SHC.CTRL_ALT_SHFT_5)]
+        [MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Cycle Time/60 minutes" + SHC.CTRL_ALT_SHFT_5)]
         private static void SET_CycleTime_060()
         {
             SetCycleTime(060);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Cycle Time/90 minutes" + SHC.CTRL_ALT_SHFT_6)]
+        [MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Cycle Time/90 minutes" + SHC.CTRL_ALT_SHFT_6)]
         private static void SET_CycleTime_090()
         {
             SetCycleTime(090);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Cycle Time/120 minutes" + SHC.CTRL_ALT_SHFT_7)]
+        [MenuItem(
+            PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Cycle Time/120 minutes" + SHC.CTRL_ALT_SHFT_7
+        )]
         private static void SET_CycleTime_120()
         {
             SetCycleTime(120);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Cycle Time/150 minutes" + SHC.CTRL_ALT_SHFT_8)]
+        [MenuItem(
+            PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Cycle Time/150 minutes" + SHC.CTRL_ALT_SHFT_8
+        )]
         private static void SET_CycleTime_150()
         {
             SetCycleTime(150);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Cycle Time/180 minutes" + SHC.CTRL_ALT_SHFT_9)]
+        [MenuItem(
+            PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Cycle Time/180 minutes" + SHC.CTRL_ALT_SHFT_9
+        )]
         private static void SET_CycleTime_180()
         {
             SetCycleTime(180);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Cycle Time/240 minutes" + SHC.CTRL_ALT_SHFT_0)]
+        [MenuItem(
+            PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Cycle Time/240 minutes" + SHC.CTRL_ALT_SHFT_0
+        )]
         private static void SET_CycleTime_240()
         {
             SetCycleTime(240);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Set Time/Hour/AM/12 AM (Midnight)" + SHC.CTRL_SHFT_0)]
+        [MenuItem(
+            PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Set Time/Hour/AM/12 AM (Midnight)" + SHC.CTRL_SHFT_0
+        )]
         private static void SetHour_00()
         {
             SetHour(0);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Set Time/Hour/AM/1 AM" + SHC.CTRL_SHFT_1)]
+        [MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Set Time/Hour/AM/1 AM" + SHC.CTRL_SHFT_1)]
         private static void SetHour_01()
         {
             SetHour(1);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Set Time/Hour/AM/2 AM" + SHC.CTRL_SHFT_2)]
+        [MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Set Time/Hour/AM/2 AM" + SHC.CTRL_SHFT_2)]
         private static void SetHour_02()
         {
             SetHour(2);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Set Time/Hour/AM/3 AM" + SHC.CTRL_SHFT_3)]
+        [MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Set Time/Hour/AM/3 AM" + SHC.CTRL_SHFT_3)]
         private static void SetHour_03()
         {
             SetHour(3);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Set Time/Hour/AM/4 AM" + SHC.CTRL_SHFT_4)]
+        [MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Set Time/Hour/AM/4 AM" + SHC.CTRL_SHFT_4)]
         private static void SetHour_04()
         {
             SetHour(4);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Set Time/Hour/AM/5 AM" + SHC.CTRL_SHFT_5)]
+        [MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Set Time/Hour/AM/5 AM" + SHC.CTRL_SHFT_5)]
         private static void SetHour_05()
         {
             SetHour(5);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Set Time/Hour/AM/6 AM" + SHC.CTRL_SHFT_6)]
+        [MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Set Time/Hour/AM/6 AM" + SHC.CTRL_SHFT_6)]
         private static void SetHour_06()
         {
             SetHour(6);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Set Time/Hour/AM/7 AM" + SHC.CTRL_SHFT_7)]
+        [MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Set Time/Hour/AM/7 AM" + SHC.CTRL_SHFT_7)]
         private static void SetHour_07()
         {
             SetHour(7);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Set Time/Hour/AM/8 AM" + SHC.CTRL_SHFT_8)]
+        [MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Set Time/Hour/AM/8 AM" + SHC.CTRL_SHFT_8)]
         private static void SetHour_08()
         {
             SetHour(8);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Set Time/Hour/AM/9 AM" + SHC.CTRL_SHFT_9)]
+        [MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Set Time/Hour/AM/9 AM" + SHC.CTRL_SHFT_9)]
         private static void SetHour_09()
         {
             SetHour(9);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Set Time/Hour/AM/10 AM")]
+        [MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Set Time/Hour/AM/10 AM")]
         private static void SetHour_10()
         {
             SetHour(10);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Set Time/Hour/AM/11 AM")]
+        [MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Set Time/Hour/AM/11 AM")]
         private static void SetHour_11()
         {
             SetHour(11);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Set Time/Hour/PM/12 PM (Noon)" + SHC.ALT_SHFT_0)]
+        [MenuItem(
+            PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Set Time/Hour/PM/12 PM (Noon)" + SHC.ALT_SHFT_0
+        )]
         private static void SetHour_12()
         {
             SetHour(12);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Set Time/Hour/PM/1 PM" + SHC.ALT_SHFT_1)]
+        [MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Set Time/Hour/PM/1 PM" + SHC.ALT_SHFT_1)]
         private static void SetHour_13()
         {
             SetHour(13);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Set Time/Hour/PM/2 PM" + SHC.ALT_SHFT_2)]
+        [MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Set Time/Hour/PM/2 PM" + SHC.ALT_SHFT_2)]
         private static void SetHour_14()
         {
             SetHour(14);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Set Time/Hour/PM/3 PM" + SHC.ALT_SHFT_3)]
+        [MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Set Time/Hour/PM/3 PM" + SHC.ALT_SHFT_3)]
         private static void SetHour_15()
         {
             SetHour(15);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Set Time/Hour/PM/4 PM" + SHC.ALT_SHFT_4)]
+        [MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Set Time/Hour/PM/4 PM" + SHC.ALT_SHFT_4)]
         private static void SetHour_16()
         {
             SetHour(16);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Set Time/Hour/PM/5 PM" + SHC.ALT_SHFT_5)]
+        [MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Set Time/Hour/PM/5 PM" + SHC.ALT_SHFT_5)]
         private static void SetHour_17()
         {
             SetHour(17);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Set Time/Hour/PM/6 PM" + SHC.ALT_SHFT_6)]
+        [MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Set Time/Hour/PM/6 PM" + SHC.ALT_SHFT_6)]
         private static void SetHour_18()
         {
             SetHour(18);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Set Time/Hour/PM/7 PM" + SHC.ALT_SHFT_7)]
+        [MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Set Time/Hour/PM/7 PM" + SHC.ALT_SHFT_7)]
         private static void SetHour_19()
         {
             SetHour(19);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Set Time/Hour/PM/8 PM" + SHC.ALT_SHFT_8)]
+        [MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Set Time/Hour/PM/8 PM" + SHC.ALT_SHFT_8)]
         private static void SetHour_20()
         {
             SetHour(20);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Set Time/Hour/PM/9 PM" + SHC.ALT_SHFT_9)]
+        [MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Set Time/Hour/PM/9 PM" + SHC.ALT_SHFT_9)]
         private static void SetHour_21()
         {
             SetHour(21);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Set Time/Hour/PM/10 PM")]
+        [MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Set Time/Hour/PM/10 PM")]
         private static void SetHour_22()
         {
             SetHour(22);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Set Time/Hour/PM/11 PM")]
+        [MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Set Time/Hour/PM/11 PM")]
         private static void SetHour_23()
         {
             SetHour(23);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Set Time/Minute/0")]
+        [MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Set Time/Minute/0")]
         private static void SetMinute_00()
         {
             SetMinute(0);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Set Time/Minute/5")]
+        [MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Set Time/Minute/5")]
         private static void SetMinute_05()
         {
             SetMinute(5);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Set Time/Minute/10")]
+        [MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Set Time/Minute/10")]
         private static void SetMinute_10()
         {
             SetMinute(10);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Set Time/Minute/15")]
+        [MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Set Time/Minute/15")]
         private static void SetMinute_15()
         {
             SetMinute(15);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Set Time/Minute/20")]
+        [MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Set Time/Minute/20")]
         private static void SetMinute_20()
         {
             SetMinute(20);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Set Time/Minute/25")]
+        [MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Set Time/Minute/25")]
         private static void SetMinute_25()
         {
             SetMinute(25);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Set Time/Minute/30")]
+        [MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Set Time/Minute/30")]
         private static void SetMinute_30()
         {
             SetMinute(30);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Set Time/Minute/35")]
+        [MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Set Time/Minute/35")]
         private static void SetMinute_35()
         {
             SetMinute(35);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Set Time/Minute/40")]
+        [MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Set Time/Minute/40")]
         private static void SetMinute_40()
         {
             SetMinute(40);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Set Time/Minute/45")]
+        [MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Set Time/Minute/45")]
         private static void SetMinute_45()
         {
             SetMinute(45);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Set Time/Minute/50")]
+        [MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Set Time/Minute/50")]
         private static void SetMinute_50()
         {
             SetMinute(50);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Set Time/Minute/55")]
+        [MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Set Time/Minute/55")]
         private static void SetMinute_55()
         {
             SetMinute(55);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Move Time/Forward/Hour/1" + SHC.CTRL_PageUp)]
+        [MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Move Time/Forward/Hour/1" + SHC.CTRL_PageUp)]
         private static void SET_MoveTime_01H()
         {
             SET_Move(01, 00, 00);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Move Time/Forward/Hour/2")]
+        [MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Move Time/Forward/Hour/2")]
         private static void SET_MoveTime_02H()
         {
             SET_Move(02, 00, 00);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Move Time/Forward/Hour/3")]
+        [MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Move Time/Forward/Hour/3")]
         private static void SET_MoveTime_03H()
         {
             SET_Move(03, 00, 00);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Move Time/Forward/Hour/4")]
+        [MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Move Time/Forward/Hour/4")]
         private static void SET_MoveTime_04H()
         {
             SET_Move(04, 00, 00);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Move Time/Forward/Hour/6" + SHC.CTRL_Home)]
+        [MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Move Time/Forward/Hour/6" + SHC.CTRL_Home)]
         private static void SET_MoveTime_06H()
         {
             SET_Move(06, 00, 00);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Move Time/Forward/Hour/9")]
+        [MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Move Time/Forward/Hour/9")]
         private static void SET_MoveTime_09H()
         {
             SET_Move(09, 00, 00);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Move Time/Forward/Hour/12" + SHC.CTRL_Insert)]
+        [MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Move Time/Forward/Hour/12" + SHC.CTRL_Insert)]
         private static void SET_MoveTime_12H()
         {
             SET_Move(12, 00, 00);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Move Time/Forward/Hour/16")]
+        [MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Move Time/Forward/Hour/16")]
         private static void SET_MoveTime_16H()
         {
             SET_Move(16, 00, 00);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Move Time/Forward/Hour/18")]
+        [MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Move Time/Forward/Hour/18")]
         private static void SET_MoveTime_18H()
         {
             SET_Move(18, 00, 00);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Move Time/Forward/Hour/20")]
+        [MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Move Time/Forward/Hour/20")]
         private static void SET_MoveTime_20H()
         {
             SET_Move(20, 00, 00);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Move Time/Forward/Minute/1" + SHC.ALT_PageUp)]
+        [MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Move Time/Forward/Minute/1" + SHC.ALT_PageUp)]
         private static void SET_MoveTime_01M()
         {
             SET_Move(00, 01, 00);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Move Time/Forward/Minute/2")]
+        [MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Move Time/Forward/Minute/2")]
         private static void SET_MoveTime_02M()
         {
             SET_Move(00, 02, 00);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Move Time/Forward/Minute/5")]
+        [MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Move Time/Forward/Minute/5")]
         private static void SET_MoveTime_05M()
         {
             SET_Move(00, 05, 00);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Move Time/Forward/Minute/10")]
+        [MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Move Time/Forward/Minute/10")]
         private static void SET_MoveTime_10M()
         {
             SET_Move(00, 10, 00);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Move Time/Forward/Minute/15" + SHC.ALT_Home)]
+        [MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Move Time/Forward/Minute/15" + SHC.ALT_Home)]
         private static void SET_MoveTime_15M()
         {
             SET_Move(00, 15, 00);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Move Time/Forward/Minute/20")]
+        [MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Move Time/Forward/Minute/20")]
         private static void SET_MoveTime_20M()
         {
             SET_Move(00, 20, 00);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Move Time/Forward/Minute/30" + SHC.ALT_Insert)]
+        [MenuItem(
+            PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Move Time/Forward/Minute/30" + SHC.ALT_Insert
+        )]
         private static void SET_MoveTime_30M()
         {
             SET_Move(00, 30, 00);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Move Time/Forward/Minute/45")]
+        [MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Move Time/Forward/Minute/45")]
         private static void SET_MoveTime_45M()
         {
             SET_Move(00, 45, 00);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Move Time/Back/Hour/1" + SHC.CTRL_PageDown)]
+        [MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Move Time/Back/Hour/1" + SHC.CTRL_PageDown)]
         private static void SET_MoveTime_N01H()
         {
             SET_Move(-01, 00, 00);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Move Time/Back/Hour/2")]
+        [MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Move Time/Back/Hour/2")]
         private static void SET_MoveTime_N02H()
         {
             SET_Move(-02, 00, 00);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Move Time/Back/Hour/3")]
+        [MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Move Time/Back/Hour/3")]
         private static void SET_MoveTime_N03H()
         {
             SET_Move(-03, 00, 00);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Move Time/Back/Hour/4")]
+        [MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Move Time/Back/Hour/4")]
         private static void SET_MoveTime_N04H()
         {
             SET_Move(-04, 00, 00);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Move Time/Back/Hour/6" + SHC.CTRL_End)]
+        [MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Move Time/Back/Hour/6" + SHC.CTRL_End)]
         private static void SET_MoveTime_N06H()
         {
             SET_Move(-06, 00, 00);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Move Time/Back/Hour/9")]
+        [MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Move Time/Back/Hour/9")]
         private static void SET_MoveTime_N09H()
         {
             SET_Move(-09, 00, 00);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Move Time/Back/Hour/12" + SHC.CTRL_Delete)]
+        [MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Move Time/Back/Hour/12" + SHC.CTRL_Delete)]
         private static void SET_MoveTime_N12H()
         {
             SET_Move(-12, 00, 00);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Move Time/Back/Hour/16")]
+        [MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Move Time/Back/Hour/16")]
         private static void SET_MoveTime_N16H()
         {
             SET_Move(-16, 00, 00);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Move Time/Back/Hour/18")]
+        [MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Move Time/Back/Hour/18")]
         private static void SET_MoveTime_N18H()
         {
             SET_Move(-18, 00, 00);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Move Time/Back/Hour/20")]
+        [MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Move Time/Back/Hour/20")]
         private static void SET_MoveTime_N20H()
         {
             SET_Move(-20, 00, 00);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Move Time/Back/Minute/1" + SHC.ALT_PageDown)]
+        [MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Move Time/Back/Minute/1" + SHC.ALT_PageDown)]
         private static void SET_MoveTime_N01M()
         {
             SET_Move(00, -01, 00);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Move Time/Back/Minute/2")]
+        [MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Move Time/Back/Minute/2")]
         private static void SET_MoveTime_N02M()
         {
             SET_Move(00, -02, 00);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Move Time/Back/Minute/5")]
+        [MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Move Time/Back/Minute/5")]
         private static void SET_MoveTime_N05M()
         {
             SET_Move(00, -05, 00);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Move Time/Back/Minute/10")]
+        [MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Move Time/Back/Minute/10")]
         private static void SET_MoveTime_N10M()
         {
             SET_Move(00, -10, 00);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Move Time/Back/Minute/15" + SHC.ALT_End)]
+        [MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Move Time/Back/Minute/15" + SHC.ALT_End)]
         private static void SET_MoveTime_N15M()
         {
             SET_Move(00, -15, 00);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Move Time/Back/Minute/20")]
+        [MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Move Time/Back/Minute/20")]
         private static void SET_MoveTime_N20M()
         {
             SET_Move(00, -20, 00);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Move Time/Back/Minute/30" + SHC.ALT_Delete)]
+        [MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Move Time/Back/Minute/30" + SHC.ALT_Delete)]
         private static void SET_MoveTime_N30M()
         {
             SET_Move(00, -30, 00);
         }
 
-        [UnityEditor.MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Move Time/Back/Minute/45")]
+        [MenuItem(PKG.Menu.Appalachia.Tools.Base + "Enviro/Time/Move Time/Back/Minute/45")]
         private static void SET_MoveTime_N45M()
         {
             SET_Move(00, -45, 00);
