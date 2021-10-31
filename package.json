@@ -1,7 +1,7 @@
 {
   "name": "com.appalachia.unity3d.globals",
   "displayName": "Appalachia.Globals for Unity3D",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "unity": "2020.3",
   "description": "Utilities for managing an instance of a dynamic game world at runtime.",
   "keywords": [
