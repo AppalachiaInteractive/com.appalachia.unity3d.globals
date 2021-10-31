@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Appalachia.Core.Attributes;
@@ -72,30 +73,7 @@ namespace Appalachia.Globals.Application
             set => _isSceneLoading = value;
         }
 
-        public IEnumerator BootloadScenes(SceneBootloadData bootloadData)
-        {
-            if (bootloadData.bootloads == null)
-            {
-                bootloadData.bootloads = new List<SceneBootloadProgress>();
-            }
-
-            var sceneReferences = bootloadData.GetScenesToLoad();
-
-            foreach (var sceneReference in sceneReferences)
-            {
-                var assetReference = sceneReference.sceneReference;
-
-                var bootload = new SceneBootloadProgress
-                {
-                    operation = assetReference.LoadSceneAsync(LoadSceneMode.Additive, false)
-                };
-
-                bootload.operation.Completed += handle => bootload.scene = handle.Result;
-
-                bootloadData.bootloads.Add(bootload);
-                yield return null;
-            }
-        }
+        
 
         public void ExitApplication()
         {
@@ -139,6 +117,8 @@ namespace Appalachia.Globals.Application
             {
                 state.nextArea = ApplicationStateArea.MainMenu;
             }
+            
+            
 
             DontDestroyOnLoadSafe(gameObject);
         }
@@ -192,43 +172,7 @@ namespace Appalachia.Globals.Application
         {
             _isApplicationFocused = isFocused;
         }
-
-        private IEnumerator ProcessBootloadData(SceneBootloadData bootloadData)
-        {
-            if (state.current.substate == ApplicationStates.NotLoaded)
-            {
-                state.current.substate = ApplicationStates.Loading;
-
-                var subEnumerator = BootloadScenes(bootloadData);
-
-                while (subEnumerator.MoveNext())
-                {
-                    yield return subEnumerator;
-                }
-            }
-            else if (state.current.substate == ApplicationStates.Loading)
-            {
-                var anyPending = false;
-                var totalProgress = 0f;
-                var iterations = bootloadData.bootloads.Count;
-
-                foreach (var bootload in bootloadData.bootloads)
-                {
-                    totalProgress += bootload.progress;
-
-                    if (!bootload.operation.IsDone)
-                    {
-                        anyPending = true;
-                    }
-                }
-
-                if (!anyPending)
-                {
-                    state.current.substate = ApplicationStates.LoadComplete;
-                }
-            }
-        }
-
+        
         private void Reset()
         {
             state = null;
@@ -237,32 +181,17 @@ namespace Appalachia.Globals.Application
             Initialize();
         }
 
-        private IEnumerator Run()
+        private void Update()
         {
             Initialize();
 
             var currentBootloadData = _bootloads.GetByArea(state.currentArea);
 
-            var subEnumerator = ProcessBootloadData(currentBootloadData);
-
-            while (subEnumerator.MoveNext())
-            {
-                yield return subEnumerator.Current;
-            }
-
-            if (state.nextArea == ApplicationStateArea.None)
-            {
-                yield break;
-            }
+            SceneBootloader.CheckAreaLoadState(currentBootloadData, state.current);
 
             var nextBootloadData = _bootloads.GetByArea(state.nextArea);
 
-            subEnumerator = ProcessBootloadData(nextBootloadData);
-
-            while (subEnumerator.MoveNext())
-            {
-                yield return subEnumerator.Current;
-            }
+            SceneBootloader.CheckAreaLoadState(nextBootloadData, state.next);
         }
     }
 }

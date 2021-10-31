@@ -14,61 +14,34 @@ namespace Appalachia.Globals.Application.Scenes
 {
     public class SceneBootloadData : CategorizableAutonamedIdentifiableAppalachiaObject<SceneBootloadData>
     {
+        [PropertyOrder(140)]
+        [NonSerialized, ShowInInspector]
+        public SceneBootloadProgress entrySceneBootloadProgress;
+        
         [PropertyOrder(150)]
         [NonSerialized, ShowInInspector]
-        public List<SceneBootloadProgress> bootloads;
+        public List<SceneBootloadProgress> bootloadProgress;
+
+        [PropertyOrder(80)]
+        public SceneReference entryScene;
 
         [PropertyOrder(90)]
         [SerializeField]
         private AppaList_SceneReference _scenes;
 
-        /*
-        [PropertyOrder(79)]
-        [SerializeField] private bool _specifyFirst;
-
-        [PropertyOrder(99)]
-        [SerializeField] private bool _specifyLast;
-        
-        [PropertyOrder(80)]
-        [ShowIf(nameof(_specifyFirst))]
-        [SerializeField]
-        private SceneReference _first;
-
-        [PropertyOrder(100)]
-        [ShowIf(nameof(_specifyLast))]
-        [SerializeField]
-        private SceneReference _last;
-
-
-        [ShowInInspector]
-        public int Count => (_first == null ? 0 : 1) + (_last == null ? 0 : 1) + _scenes?.Count ?? 0;
-        */
-
         public IEnumerable<SceneReference> GetScenesToLoad()
         {
-            /*
-            if (_specifyFirst && (_first != null))
-            {
-                yield return _first;
-            }
-            */
-
             foreach (var scene in _scenes)
             {
                 yield return scene;
             }
-
-            /*if (_specifyLast && (_last != null))
-            {
-                yield return _last;
-            }*/
         }
 
         private void Awake()
         {
-            if (bootloads == null)
+            if (bootloadProgress == null)
             {
-                bootloads = new List<SceneBootloadProgress>();
+                bootloadProgress = new List<SceneBootloadProgress>();
             }
 
             if (_scenes == null)
