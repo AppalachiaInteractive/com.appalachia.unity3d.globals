@@ -12,12 +12,24 @@
 ## Releasing
 | Hash | Date | Author | Changes |
 |------|------|--------|---------|
-| 4b43fbae986dd4c18f5d8d3a4b2cfbf724c387dd | 2021-10-31 | Chris Schubert | Updating package dependencies for all packages |
+
+
+ ## Tag: `v0.2.0`
+| Hash | Date | Author | Changes |
+|------|------|--------|---------|
+| 0df2fd7a0a71b07bf6d6db301d6aa85057486933 | 2021-10-31 | Chris Schubert | Updating to 0.2 for packaging simplicity |
+
+
+ ## Tag: `v0.1.9`
+| Hash | Date | Author | Changes |
+|------|------|--------|---------|
 
 
  ## Tag: `v0.1.8`
 | Hash | Date | Author | Changes |
 |------|------|--------|---------|
+| 5989ca0de0eda9b2171c32d57c06b220b2f7a95e | 2021-10-31 | Chris Schubert | Updating changelog and releaselog |
+| 4b43fbae986dd4c18f5d8d3a4b2cfbf724c387dd | 2021-10-31 | Chris Schubert | Updating package dependencies for all packages |
 
 
  ## Tag: `v0.1.7`
