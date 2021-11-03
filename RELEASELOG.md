@@ -1,12 +1,6 @@
 ```
-[31m  ______     __  __     __  __     __    __     ______     ______    
-[33m /\  ___\   /\ \_\ \   /\ \/\ \   /\ "-./  \   /\  == \   /\  __ \   
-[32m \ \ \____  \ \  __ \  \ \ \_\ \  \ \ \-./\ \  \ \  __<   \ \  __ \  
-[36m  \ \_____\  \ \_\ \_\  \ \_____\  \ \_\ \ \_\  \ \_____\  \ \_\ \_\ 
-[34m   \/_____/   \/_/\/_/   \/_____/   \/_/  \/_/   \/_____/   \/_/\/_/ 
-                                                                    
 C:/Users/Chris/com.appalachia/unity3d/appa/Assets/Appalachia.Globals
-[1;32;49m Let's go!  [0m
+ Let's go!  
  ______   ______   __       ______   ______   ______   ______    
 /\  == \ /\  ___\ /\ \     /\  ___\ /\  __ \ /\  ___\ /\  ___\   
 \ \  __< \ \  __\ \ \ \____\ \  __\ \ \  __ \\ \___  \\ \  __\   
@@ -21,4 +15,5 @@ C:/Users/Chris/com.appalachia/unity3d/appa/Assets/Appalachia.Globals
 `0.2.0`
 | Hash | Date | Author | Changes |
 |------|------|--------|---------|
+| 3f31eaf615e82acbb6b3a3e01869f7c305dc71dd | 2021-11-01 | Chris Schubert | Updating changelog and releaselog |
 | 6e107558c85e2313783aaa54b095f8a1497392a9 | 2021-10-31 | Chris Schubert | Updating changelog and releaselog |
