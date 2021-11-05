@@ -15,6 +15,7 @@ C:/Users/Chris/com.appalachia/unity3d/appa/Assets/Appalachia.Globals
 `0.2.0`
 | Hash | Date | Author | Changes |
 |------|------|--------|---------|
+| f5045fdbb4be44bcf2fdbc383569acc6df3ab10e | 2021-11-05 | Chris Schubert | Updating changelog and releaselog |
 | 8ce8c0cddea41b35d9ffd1f910608b3fa4898333 | 2021-11-05 | Chris Schubert | Updating changelog and releaselog |
 | 8d4b445ed3049f246a7e15d907250ece6e692432 | 2021-11-05 | Chris Schubert | Updating changelog and releaselog |
 | 00bd8aaa3a52f180a824a626358f3ae78e6c635f | 2021-11-05 | Chris Schubert | Updating changelog and releaselog |
