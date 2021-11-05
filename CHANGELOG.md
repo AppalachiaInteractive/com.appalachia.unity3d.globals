@@ -1,6 +1,4 @@
 ```
-C:/Users/Chris/com.appalachia/unity3d/appa/Assets/Appalachia.Globals
- Let's go!  
  ________   ___  ___   ________   ________    ________   _______    ________      
 |\   ____\ |\  \|\  \ |\   __  \ |\   ___  \ |\   ____\ |\  ___ \  |\   ____\     
 \ \  \___| \ \  \\\  \\ \  \|\  \\ \  \\ \  \\ \  \___| \ \   __/| \ \  \___|_    
@@ -14,6 +12,7 @@ C:/Users/Chris/com.appalachia/unity3d/appa/Assets/Appalachia.Globals
 ## Releasing
 | Hash | Date | Author | Changes |
 |------|------|--------|---------|
+| d34b920d96f5641a84f5a5785ee75f7928b29cf3 | 2021-11-05 | Chris Schubert | Updating changelog and releaselog |
 | 305f4e71bad1ff49f3903a23dec93b45396f18e7 | 2021-11-05 | Chris Schubert | Updating changelog and releaselog |
 | 1ad6db69bb4eae5e677f70868a3bb28226f57fed | 2021-11-05 | Chris Schubert | Updating changelog and releaselog |
 | f1cb2974e7193bb52e451cd942ae502ac97e124a | 2021-11-05 | Chris Schubert | Updating changelog and releaselog |
