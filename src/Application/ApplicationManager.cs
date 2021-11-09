@@ -18,13 +18,6 @@ namespace Appalachia.Globals.Application
     [AlwaysInitializeOnLoad]
     public class ApplicationManager : SingletonAppalachiaBehaviour<ApplicationManager>
     {
-        static ApplicationManager()
-        {
-#if UNITY_EDITOR
-            UnityEditor.EditorApplication.delayCall += () => instance.Initialize();
-#endif
-        }
-
         [Title("Application State"), InlineProperty, HideLabel]
         public ApplicationState state;
 

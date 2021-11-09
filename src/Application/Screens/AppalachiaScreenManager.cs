@@ -3,6 +3,7 @@ using Appalachia.CI.Integration.FileSystem;
 using Appalachia.Core.Behaviours;
 using Appalachia.Editing.Debugging.Graphy;
 using Appalachia.Editing.Debugging.IngameDebugConsole;
+using Appalachia.Utility.Logging;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -42,7 +43,7 @@ namespace Appalachia.Globals.Application.Screens
 
                 AppaDirectory.CreateDirectoryStructureForFilePath(filePath);
                 
-                Debug.Log($"Captured Screenshot to : {filePath}");
+                AppaLog.Info($"Captured Screenshot to : {filePath}");
                 ScreenCapture.CaptureScreenshot(filePath);
             };
 #endif
