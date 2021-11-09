@@ -14,12 +14,9 @@ C:/Users/Chris/com.appalachia/unity3d/appa/Assets/Appalachia.Globals
 ## Releasing
 | Hash | Date | Author | Changes |
 |------|------|--------|---------|
+| 073b79948aa2d836771f9cdb7bbabdef0364de3e | 2021-11-09 | Chris Schubert | Moving most application code to prototype library, adding some debugger stepthroughs |
+| 3694a5d12e7bca9ee97a8187cdcb4733ce5a5643 | 2021-11-08 | Chris Schubert | Updating changelog and releaselog |
 | 4c1ab422fe0f5782f974ff077dc8b791960f55b7 | 2021-11-08 | Chris Schubert | Upgrading to new logging library |
-
-
- ## Tag: `v0.2.0`
-| Hash | Date | Author | Changes |
-|------|------|--------|---------|
 | b46b949e730c747474ca4f549c44b17bd7f8f1bb | 2021-11-06 | Chris Schubert | Updating changelog and releaselog |
 | 8da11dfd520f52ed045d96fb91e59c65c9350c6e | 2021-11-06 | Chris Schubert | Updating changelog and releaselog |
 | e2de79d3eb62b6c0c402e24314fd4670ecb50811 | 2021-11-06 | Chris Schubert | Updating changelog and releaselog |
