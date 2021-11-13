@@ -24,10 +24,14 @@ namespace Appalachia.Globals.Cameras
         private static readonly ProfilerMarker _PRF_OnDestroy = new(_PRF_PFX + "OnDestroy");
 
         private static readonly ProfilerMarker _PRF_Reset = new(_PRF_PFX + "Reset");
+#if UNITY_EDITOR
+
         private static readonly ProfilerMarker _PRF_OnDrawGizmos = new(_PRF_PFX + "OnDrawGizmos");
+
 
         private static readonly ProfilerMarker _PRF_OnDrawGizmosSelected =
             new(_PRF_PFX + "OnDrawGizmosSelected");
+#endif
 
         private static readonly ProfilerMarker _PRF_OnPreCull = new(_PRF_PFX + nameof(OnPreCull));
 
