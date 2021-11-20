@@ -41,10 +41,12 @@ namespace Appalachia.Globals.Cameras
 
         public event CameraPreCull OnCameraPreCull;
 
-        private void Awake()
+        protected override void Awake()
         {
             using (_PRF_Awake.Auto())
             {
+                base.Awake();
+                
                 _cam = GetComponent<Camera>();
             }
         }

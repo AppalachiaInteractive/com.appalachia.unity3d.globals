@@ -2,20 +2,24 @@
 
 using Appalachia.Core.Behaviours;
 using Appalachia.Core.Timing;
+using UnityEngine;
 
 #endregion
 
 namespace Appalachia.Globals.Timing
 {
-    public class CoreClockTicker : AppalachiaBehaviour
+    [ExecuteAlways]
+    public class CoreClockTicker : SingletonAppalachiaBehaviour<CoreClockTicker>
     {
         private void FixedUpdate()
         {
             CoreClock.Tick();
         }
 
-        private void Start()
+        protected override void Start()
         {
+            base.Start();
+            
             CoreClock.Tick();
         }
 
