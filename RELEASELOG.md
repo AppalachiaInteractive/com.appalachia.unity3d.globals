@@ -15,6 +15,8 @@ Let's go!
 `0.2.0`
 | Hash | Date | Author | Changes |
 |------|------|--------|---------|
+| 665501a4fd04aad6afca23d8b825f6f999607f8a | 2021-11-20 | Chris Schubert | Code cleanup and base class refactoring |
+| 1a7998b7844e720004379ba0a2bcd3d8f82ddb36 | 2021-11-14 | Chris Schubert | Updating changelog and releaselog |
 | 25b26a25cf5cb223741a8ab3ba928b94f4309a68 | 2021-11-13 | Chris Schubert | Updating changelog and releaselog |
 | f5c7962f37b01dc16a264ce5497f1bad043fa1e6 | 2021-11-13 | Chris Schubert | Updating changelog and releaselog |
 | 657ed678008fd421ded4fdef79198fd0114517bf | 2021-11-13 | Chris Schubert | EXR to gitlfs |
