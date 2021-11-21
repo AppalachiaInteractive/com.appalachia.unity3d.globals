@@ -14,6 +14,7 @@ Development environment loaded!
 ## Releasing
 | Hash | Date | Author | Changes |
 |------|------|--------|---------|
+| 692e751e675e3d45773c2b9fafc51299df48b679 | 2021-11-20 | Chris Schubert | Updating changelog and releaselog |
 | dd781faa655784f198ed5da0ab939e83eda39562 | 2021-11-20 | Chris Schubert | Updating changelog and releaselog |
 | bf8dbf7ce99ee40ffcff26de990244c502911d62 | 2021-11-20 | Chris Schubert | Updating changelog and releaselog |
 | 1a43d8f0b8f40bfa6e713697e38253f762ff2782 | 2021-11-20 | Chris Schubert | Packaging updates and formatting for titles |
