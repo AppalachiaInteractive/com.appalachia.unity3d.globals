@@ -1,6 +1,4 @@
 ```
-C:/Users/Chris/com.appalachia/unity3d/appa/Assets/Appalachia.Globals
-Development environment loaded!  
  ______   ______   __       ______   ______   ______   ______    
 /\  == \ /\  ___\ /\ \     /\  ___\ /\  __ \ /\  ___\ /\  ___\   
 \ \  __< \ \  __\ \ \ \____\ \  __\ \ \  __ \\ \___  \\ \  __\   
@@ -15,6 +13,8 @@ Development environment loaded!
 `0.2.0`
 | Hash | Date | Author | Changes |
 |------|------|--------|---------|
+| 2b2082b7063915c2ad72cb519c53d64f35701944 | 2021-12-02 | Chris Schubert | General code cleanup |
+| ceaeadd8815902c8ca24f3669bd471db9c296199 | 2021-11-21 | Chris Schubert | Updating changelog and releaselog |
 | 692e751e675e3d45773c2b9fafc51299df48b679 | 2021-11-20 | Chris Schubert | Updating changelog and releaselog |
 | dd781faa655784f198ed5da0ab939e83eda39562 | 2021-11-20 | Chris Schubert | Updating changelog and releaselog |
 | bf8dbf7ce99ee40ffcff26de990244c502911d62 | 2021-11-20 | Chris Schubert | Updating changelog and releaselog |
