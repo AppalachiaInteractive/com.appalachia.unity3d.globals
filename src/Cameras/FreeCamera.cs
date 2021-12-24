@@ -1,12 +1,14 @@
 using System.Collections.Generic;
-using Appalachia.Core.Behaviours;
+using Appalachia.Core.Objects.Root;
+using Appalachia.Utility.Async;
 using UnityEngine;
 
 namespace Appalachia.Globals.Cameras
 {
     [ExecuteAlways]
-    public class FreeCamera: AppalachiaBehaviour
+    public sealed class FreeCamera : AppalachiaBehaviour<FreeCamera>
     {
+        
         private static readonly string kHorizontal = "Horizontal";
         private static readonly string kMouseX = "Mouse X";
         private static readonly string kMouseY = "Mouse Y";
@@ -22,9 +24,9 @@ namespace Appalachia.Globals.Cameras
         public float m_MoveSpeedIncrement = 2.5f;
         public float m_Turbo = 10.0f;
 
-        protected override void OnEnable()
+        protected override async AppaTask OnEnable()
         {
-            base.OnEnable();
+            await WhenEnabled();
             
             RegisterInputs();
         }

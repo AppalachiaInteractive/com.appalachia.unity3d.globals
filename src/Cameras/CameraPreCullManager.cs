@@ -1,6 +1,8 @@
 #region
 
-using Appalachia.Core.Behaviours;
+using Appalachia.Core.Objects.Initialization;
+using Appalachia.Core.Objects.Root;
+using Appalachia.Utility.Async;
 using Unity.Profiling;
 using UnityEngine;
 
@@ -10,46 +12,17 @@ namespace Appalachia.Globals.Cameras
 {
     [ExecuteAlways]
     [DisallowMultipleComponent]
-    public class CameraPreCullManager : AppalachiaBehaviour
+    public sealed class CameraPreCullManager : AppalachiaBehaviour<CameraPreCullManager>
     {
-        #region Profiling And Tracing Markers
-
-        private const string _PRF_PFX = nameof(CameraPreCullManager) + ".";
-        private static readonly ProfilerMarker _PRF_Awake = new(_PRF_PFX + "Awake");
-        private static readonly ProfilerMarker _PRF_Start = new(_PRF_PFX + "Start");
-        private static readonly ProfilerMarker _PRF_OnEnable = new(_PRF_PFX + "OnEnable");
-        private static readonly ProfilerMarker _PRF_Update = new(_PRF_PFX + "Update");
-        private static readonly ProfilerMarker _PRF_LateUpdate = new(_PRF_PFX + "LateUpdate");
-        private static readonly ProfilerMarker _PRF_OnDisable = new(_PRF_PFX + "OnDisable");
-        private static readonly ProfilerMarker _PRF_OnDestroy = new(_PRF_PFX + "OnDestroy");
-
-        private static readonly ProfilerMarker _PRF_Reset = new(_PRF_PFX + "Reset");
-#if UNITY_EDITOR
-
-        private static readonly ProfilerMarker _PRF_OnDrawGizmos = new(_PRF_PFX + "OnDrawGizmos");
-
-
-        private static readonly ProfilerMarker _PRF_OnDrawGizmosSelected =
-            new(_PRF_PFX + "OnDrawGizmosSelected");
-#endif
-
-        private static readonly ProfilerMarker _PRF_OnPreCull = new(_PRF_PFX + nameof(OnPreCull));
-
-        #endregion
+        #region Fields and Autoproperties
 
         public Camera _cam;
 
+        #endregion
+
         public event CameraPreCull OnCameraPreCull;
 
-        protected override void Awake()
-        {
-            using (_PRF_Awake.Auto())
-            {
-                base.Awake();
-                
-                _cam = GetComponent<Camera>();
-            }
-        }
+        #region Event Functions
 
         private void OnPreCull()
         {
@@ -58,5 +31,32 @@ namespace Appalachia.Globals.Cameras
                 OnCameraPreCull?.Invoke(_cam);
             }
         }
+
+        #endregion
+
+        protected override async AppaTask Initialize(Initializer initializer)
+        {
+            using (_PRF_Initialize.Auto())
+            {
+                await base.Initialize(initializer);
+
+                _cam = GetComponent<Camera>();
+            }
+        }
+
+        #region Profiling
+
+        private const string _PRF_PFX = nameof(CameraPreCullManager) + ".";
+
+        private static readonly ProfilerMarker _PRF_OnPreCull = new(_PRF_PFX + nameof(OnPreCull));
+
+        private static readonly ProfilerMarker _PRF_Initialize =
+            new ProfilerMarker(_PRF_PFX + nameof(Initialize));
+
+        #endregion
+
+#if UNITY_EDITOR
+
+#endif
     }
 }

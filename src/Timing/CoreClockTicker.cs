@@ -1,6 +1,6 @@
 #region
 
-using Appalachia.Core.Behaviours;
+using Appalachia.Core.Objects.Root;
 using Appalachia.Core.Timing;
 using UnityEngine;
 
@@ -11,6 +11,8 @@ namespace Appalachia.Globals.Timing
     [ExecuteAlways]
     public class CoreClockTicker : SingletonAppalachiaBehaviour<CoreClockTicker>
     {
+        
+        
         private void FixedUpdate()
         {
             CoreClock.Tick();

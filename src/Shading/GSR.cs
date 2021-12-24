@@ -2,8 +2,9 @@
 
 using System;
 using System.Collections.Generic;
-using Appalachia.Core.Scriptables;
+using Appalachia.Core.Objects.Root;
 using Appalachia.Core.Shading;
+using Appalachia.Utility.Async;
 using Unity.Profiling;
 using UnityEngine;
 
@@ -13,6 +14,8 @@ namespace Appalachia.Globals.Shading
 {
     public class GSR : SingletonAppalachiaObject<GSR>
     {
+        
+
         #region Profiling And Tracing Markers
 
         private const string _PRF_PFX = nameof(GSR) + ".";
@@ -111,9 +114,9 @@ namespace Appalachia.Globals.Shading
             }
         }
 
-        protected override void OnEnable()
+        protected override async AppaTask OnEnable()
         {
-            base.OnEnable();
+            await base.WhenEnabled();
 
             using (_PRF_OnEnable.Auto())
             {
