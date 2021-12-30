@@ -14,21 +14,7 @@ namespace Appalachia.Globals.Shading
 {
     public class GSR : SingletonAppalachiaObject<GSR>
     {
-        
-
-        #region Profiling And Tracing Markers
-
-        private const string _PRF_PFX = nameof(GSR) + ".";
-
-        private static readonly ProfilerMarker _PRF_OnEnable = new(_PRF_PFX + nameof(OnEnable));
-
-        private static readonly ProfilerMarker _PRF_ForceReinitialze =
-            new(_PRF_PFX + nameof(ForceReinitialze));
-
-        private static readonly ProfilerMarker _PRF_InitializeShaderReferences =
-            new(_PRF_PFX + nameof(InitializeShaderReferences));
-
-        #endregion
+        #region Fields and Autoproperties
 
         public List<Shader> barkShaders = new();
         public List<Shader> grassShaders = new();
@@ -63,6 +49,8 @@ namespace Appalachia.Globals.Shading
         public Texture2D touchbendQuadBase;
 
         [NonSerialized] private bool _initialized;
+
+        #endregion
 
         public void ForceReinitialze()
         {
@@ -114,7 +102,7 @@ namespace Appalachia.Globals.Shading
             }
         }
 
-        protected override async AppaTask OnEnable()
+        protected override async AppaTask WhenEnabled()
         {
             await base.WhenEnabled();
 
@@ -158,6 +146,8 @@ namespace Appalachia.Globals.Shading
             }
         }
 
+        #region Menu Items
+
 #if UNITY_EDITOR
         [UnityEditor.MenuItem(
             PKG.Menu.Appalachia.State.Base + "Rebuild Shader Property Lookup",
@@ -168,5 +158,21 @@ namespace Appalachia.Globals.Shading
         {
             instance.ForceReinitialze();
         }
+
+        #endregion
+
+        #region Profiling
+
+        private const string _PRF_PFX = nameof(GSR) + ".";
+
+        private static readonly ProfilerMarker _PRF_OnEnable = new(_PRF_PFX + nameof(OnEnable));
+
+        private static readonly ProfilerMarker _PRF_ForceReinitialze =
+            new(_PRF_PFX + nameof(ForceReinitialze));
+
+        private static readonly ProfilerMarker _PRF_InitializeShaderReferences =
+            new(_PRF_PFX + nameof(InitializeShaderReferences));
+
+        #endregion
     }
 }
