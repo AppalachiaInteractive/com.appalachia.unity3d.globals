@@ -36,6 +36,11 @@ namespace Appalachia.Globals.Cameras
 
         private void Update()
         {
+            if (!DependenciesAreReady || !FullyInitialized)
+            {
+                return;
+            }
+
             // If the debug menu is running, we don't want to conflict with its inputs.
             /*if (DebugManager.instance.displayRuntimeUI)
                 return;*/

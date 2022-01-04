@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d57e9ed6ee1d63a499f7c4fd5ab0f046, type: 3}
   m_Name: GSR
   m_EditorClassIdentifier: 
-  _initializationData:
-    _tags: []
-    _resetToken: 
   _cachedName: 
   _niceName: 
+  _initializer:
+    _tags: []
+    _resetToken: 
   barkShaders:
   - {fileID: 4800000, guid: 7630130c6ebf3b545b1a942926befb47, type: 3}
   grassShaders:

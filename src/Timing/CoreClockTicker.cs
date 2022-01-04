@@ -18,6 +18,11 @@ namespace Appalachia.Globals.Timing
 
         private void Update()
         {
+            if (!DependenciesAreReady || !FullyInitialized)
+            {
+                return;
+            }
+            
             CoreClock.Tick();
         }
 
