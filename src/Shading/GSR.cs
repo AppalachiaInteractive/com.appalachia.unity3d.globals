@@ -163,8 +163,6 @@ namespace Appalachia.Globals.Shading
 
         #region Profiling
 
-        private const string _PRF_PFX = nameof(GSR) + ".";
-
         private static readonly ProfilerMarker _PRF_OnEnable = new(_PRF_PFX + nameof(OnEnable));
 
         private static readonly ProfilerMarker _PRF_ForceReinitialze =

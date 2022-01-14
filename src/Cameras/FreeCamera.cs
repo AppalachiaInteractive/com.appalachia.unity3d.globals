@@ -36,7 +36,7 @@ namespace Appalachia.Globals.Cameras
 
         private void Update()
         {
-            if (!DependenciesAreReady || !FullyInitialized)
+            if (ShouldSkipUpdate)
             {
                 return;
             }

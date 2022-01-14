@@ -309,6 +309,7 @@ namespace Appalachia.Globals.Environment
 
 #if UNITY_EDITOR
                 UnityEditor.EditorApplication.QueuePlayerLoopUpdate();
+                UnityEditorInternal.InternalEditorUtility.RepaintAllViews();
 #endif
             }
         }

@@ -36,22 +36,17 @@ namespace Appalachia.Globals.Cameras
 
         protected override async AppaTask Initialize(Initializer initializer)
         {
+            await base.Initialize(initializer);
+
             using (_PRF_Initialize.Auto())
             {
-                await base.Initialize(initializer);
-
                 _cam = GetComponent<Camera>();
             }
         }
 
         #region Profiling
 
-        private const string _PRF_PFX = nameof(CameraPreCullManager) + ".";
-
         private static readonly ProfilerMarker _PRF_OnPreCull = new(_PRF_PFX + nameof(OnPreCull));
-
-        private static readonly ProfilerMarker _PRF_Initialize =
-            new ProfilerMarker(_PRF_PFX + nameof(Initialize));
 
         #endregion
 
