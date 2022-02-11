@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Appalachia.Core.Objects.Root;
 using Appalachia.Utility.Async;
+using Appalachia.Utility.Timing;
 using UnityEngine;
 
 namespace Appalachia.Globals.Cameras
@@ -53,8 +54,12 @@ namespace Appalachia.Globals.Cameras
                 inputRotateAxisY = Input.GetAxis(kMouseY) * m_LookSpeedMouse;
             }
 
-            inputRotateAxisX += Input.GetAxis(kRightStickX) * m_LookSpeedController * Time.deltaTime;
-            inputRotateAxisY += Input.GetAxis(kRightStickY) * m_LookSpeedController * Time.deltaTime;
+            inputRotateAxisX += Input.GetAxis(kRightStickX) *
+                                m_LookSpeedController *
+                                CoreClock.Instance.DeltaTime;
+            inputRotateAxisY += Input.GetAxis(kRightStickY) *
+                                m_LookSpeedController *
+                                CoreClock.Instance.DeltaTime;
 
             var inputChangeSpeed = Input.GetAxis(kSpeedAxis);
             if (inputChangeSpeed != 0.0f)
@@ -99,7 +104,7 @@ namespace Appalachia.Globals.Cameras
 
                 objTransform.localRotation = Quaternion.Euler(newRotationX, newRotationY, euler.z);
 
-                var moveSpeed = Time.deltaTime * m_MoveSpeed;
+                var moveSpeed = CoreClock.Instance.DeltaTime * m_MoveSpeed;
                 if (Input.GetMouseButton(1))
                 {
                     moveSpeed *= Input.GetKey(KeyCode.LeftShift) ? m_Turbo : 1.0f;
