@@ -102,6 +102,7 @@ namespace Appalachia.Globals.Shading
             }
         }
 
+        /// <inheritdoc />
         protected override async AppaTask WhenEnabled()
         {
             await base.WhenEnabled();
@@ -163,13 +164,13 @@ namespace Appalachia.Globals.Shading
 
         #region Profiling
 
-        private static readonly ProfilerMarker _PRF_OnEnable = new(_PRF_PFX + nameof(OnEnable));
-
         private static readonly ProfilerMarker _PRF_ForceReinitialze =
             new(_PRF_PFX + nameof(ForceReinitialze));
 
         private static readonly ProfilerMarker _PRF_InitializeShaderReferences =
             new(_PRF_PFX + nameof(InitializeShaderReferences));
+
+        private static readonly ProfilerMarker _PRF_OnEnable = new(_PRF_PFX + nameof(OnEnable));
 
         #endregion
     }

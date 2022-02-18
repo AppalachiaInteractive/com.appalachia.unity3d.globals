@@ -17,6 +17,11 @@ MonoBehaviour:
   _initializer:
     _tags: []
     _resetToken: 
+  _objectId:
+    _increment: 0
+    _machine: 0
+    _timestamp: 0
+    _pid: 0
   barkShaders:
   - {fileID: 4800000, guid: 7630130c6ebf3b545b1a942926befb47, type: 3}
   grassShaders:

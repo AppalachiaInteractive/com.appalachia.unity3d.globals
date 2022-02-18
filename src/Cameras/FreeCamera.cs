@@ -125,11 +125,15 @@ namespace Appalachia.Globals.Cameras
 
         #endregion
 
+        /// <inheritdoc />
         protected override async AppaTask WhenEnabled()
         {
             await base.WhenEnabled();
 
-            RegisterInputs();
+            using (_PRF_WhenEnabled.Auto())
+            {
+                RegisterInputs();
+            }
         }
 
         private void RegisterInputs()

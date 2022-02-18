@@ -14,13 +14,13 @@ namespace Appalachia.Globals.Cameras
     [DisallowMultipleComponent]
     public sealed class CameraPreCullManager : AppalachiaBehaviour<CameraPreCullManager>
     {
+        public event CameraPreCull OnCameraPreCull;
+
         #region Fields and Autoproperties
 
         public Camera _cam;
 
         #endregion
-
-        public event CameraPreCull OnCameraPreCull;
 
         #region Event Functions
 
@@ -34,6 +34,7 @@ namespace Appalachia.Globals.Cameras
 
         #endregion
 
+        /// <inheritdoc />
         protected override async AppaTask Initialize(Initializer initializer)
         {
             await base.Initialize(initializer);
