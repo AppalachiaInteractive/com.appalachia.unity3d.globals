@@ -29,14 +29,14 @@ namespace Appalachia.Globals.Shading
 
         [SerializeField] private Shader _shader;
 
-        [ShowIf(nameof(ShowRendererField))]
+        [HideIf(nameof(HideRendererField))]
         public Renderer controlledRenderer;
 
         [PropertyRange(0, nameof(MaxMaterialIndex))]
-        [ShowIf(nameof(ShowMaterialIndex))]
+        [HideIf(nameof(HideMaterialIndex))]
         public int materialIndex;
 
-        [ShowIf(nameof(ShowImageField))]
+        [HideIf(nameof(HideImageField))]
         public Image controlledImage;
 
         #endregion
@@ -121,10 +121,10 @@ namespace Appalachia.Globals.Shading
             }
         }
 
-        private bool ShowImageField => Mode == ControlMode.Renderer;
-        private bool ShowMaterialIndex => (Mode == ControlMode.Renderer) && (controlledRenderer != null);
+        private bool HideImageField => Mode != ControlMode.Renderer;
+        private bool HideMaterialIndex => !((Mode == ControlMode.Renderer) && (controlledRenderer != null));
 
-        private bool ShowRendererField => Mode == ControlMode.Renderer;
+        private bool HideRendererField => Mode != ControlMode.Renderer;
 
         private int MaxMaterialIndex =>
             Mode == ControlMode.Renderer
